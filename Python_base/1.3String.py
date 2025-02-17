@@ -7,6 +7,7 @@
 text = "我太爱上学了,以致于我炸学校"
 print(text[0])
 print(text[-1])
+print(text[1:])
 print(text[0:7:2])#左闭右开的始末位置,末尾控制间隔数输出
 print(text.find("我太爱",0,10))#找不到返回-1找到返回0
 print(text.index("我太爱"))#找不到抛出错误
