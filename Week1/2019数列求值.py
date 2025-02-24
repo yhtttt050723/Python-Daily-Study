@@ -8,23 +8,14 @@
 最大运行时间：1s
 最大运行内存: 128M
 '''
-list = []
-
+list1 = []
 def FeiBoplus(list,N):
     a,b,c = 1,1,1
-    list.append(1)
+    list1.append(1)
     for i in range(N):
-        n = a
-        if a > 10000:
-            str_a = str(a)
-            mid = str_a[-4:]
-            n = int(mid)
-            n,b,c = b,c,n+b+c
-            list.append(n)
-        else:
-            a, b, c = b, c, a + b + c
+            a, b, c = b, c, (a + b + c)%10000
             list.append(a)
     return list
 
-endlist = FeiBoplus(list,50)
-print(endlist)
+endlist1 = FeiBoplus(list1,20190324)
+print(endlist1[20190323])
