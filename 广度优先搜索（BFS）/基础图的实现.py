@@ -35,4 +35,3 @@ flag = 'B'
 
 while flag != None:
     print(flag)
-    flag = parent[flag]
