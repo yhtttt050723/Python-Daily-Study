@@ -1,33 +1,36 @@
 '''
 11 和 17 的倍数
 '''
-N = 11 * 17
-q = 0
+#N = 11 * 17
 nums = []
 listnum = []
-for q in range(10**9 + 10**8,10**9 + 10**9):#9 10
-    if q % 2 ==0:
-        continue
-    if q %(11*17)!= 0:
-        continue
-    if q %5 == 0:
-        continue
-    if q % 7 == 0:
-        continue
-    if (q +5) % 47 != 0:
-        continue
-    if (q +22) % 37 != 0:
-        continue
-    if (q +18) % 19 != 0:
-        continue
-    if (q +11) % 43 != 0:
-        continue
-    if (q + 10) % 13 != 0:
-        continue
-    nums.append(q)
-
-#[10002817, 22360151, 47074819, 59432153, 84146821] 78
-#[356008169, 887373531]89
-#17
-
+more_nums = [0,1,2,1,4,5,4,1,2,9,0,5,10,11,14,9,0,11,18,9,11,11,15,17,9,23,20,25,16,29,27,25,11,17,4,29,22,37,23,9,1,11,11,33,29,15,5,41,46]
+'''
+for i in range(304991798969,10**17,N*2):#判断函数
+    v = True
+    for j in range(0, len(more_nums)):
+        if i % (j + 1) != more_nums[j]:
+            v = False
+            break
+    if v:
+        nums.append(i)
 print(nums)
+'''
+
+N = 1467466423049 - 1460334676889
+for i in range(1460334676889,10**17,N):
+    if i%44==33 and i%45==29 and i%46==15 and i%47==5 and i%48==41 and i%49==46:
+        listnum.append(i)
+
+for i in listnum:#判断函数
+    v = True
+    for j in range(0, len(more_nums)):
+        if i % (j + 1) != more_nums[j]:
+            v = False
+            break
+    if v:
+        nums.append(i)
+print(nums)
+
+#1460334676889这个数字是通过暴力找出来的,前面的数字认证过是不符合的
+#步长优化 是通过两个相邻的数字相减 去得到的

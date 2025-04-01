@@ -1,3 +1,5 @@
+'''
+第一次错误代码
 import math
 d1,p1,q1,d2,p2,q2 = map(int,input().split())
 
@@ -27,3 +29,41 @@ def dfs(x,y,step):
 
 total = dfs(sx,sy,0)
 print(total)
+'''
+#输入控制
+d1, p1, q1, d2, p2, q2 = map(int, input().split())
+
+# 定义每个方向对应的轴向坐标变化 (dq, dr) 步数定义
+directions = [
+    (-1, 0),   # 方向0
+    (0, -1),   # 方向1
+    (1, -1),   # 方向2
+    (1, 0),    # 方向3
+    (0, 1),    # 方向4
+    (-1, 1)    # 方向5
+]
+
+#由于一开始是从 d 位置走的 这个函数用来计算初识和终止坐标
+def compute_coords(d, p, q):
+    # 计算两个方向的总坐标变化
+    dir1 = directions[d]
+    dir2 = directions[(d + 2) % 6]
+    q_total = p * dir1[0] + q * dir2[0]
+    r_total = p * dir1[1] + q * dir2[1]
+    return q_total, r_total
+
+# 计算两个点的轴向坐标
+q1_total, r1_total = compute_coords(d1, p1, q1)
+q2_total, r2_total = compute_coords(d2, p2, q2)
+
+'''
+上面的思路很好想
+下面这个转化坐标很经典
+'''
+
+# 转换为立方体坐标并计算曼哈顿距离
+x1, y1, z1 = q1_total, r1_total, -q1_total - r1_total
+x2, y2, z2 = q2_total, r2_total, -q2_total - r2_total
+
+distance = (abs(x1 - x2) + abs(y1 - y2) + abs(z1 - z2)) // 2
+print(distance)
