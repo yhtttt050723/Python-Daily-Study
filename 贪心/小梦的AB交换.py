@@ -1,3 +1,4 @@
+T = int(input())
 def greedy(n,s):
     flag1 = []
     flag2 = []
@@ -10,25 +11,20 @@ def greedy(n,s):
             flag1.append('B')
             flag2.append('A')
 
-    str1 = 0
-    str2 = 0
+    c1 = 0
+    c2 = 0
 
     for i in range(0,len(s)):
         if flag1[i] == s[i]:
-            str1 += 1
+            c1 += 1
         if flag2[i] == s[i]:
-            str2 += 1
+            c2 += 1
 
-    total = min(str1,str2)
-    print('')
+    total = min(c1,c2)
     return total
-
-T = int(input())
 
 for _ in range(T):
     n = int(input())
-    s = input()
+    s = input().strip()
     total = greedy(n,s)
-    if len(s) != n*2:
-        continue
     print(total//2)

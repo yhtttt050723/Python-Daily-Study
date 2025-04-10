@@ -21,3 +21,4 @@ for i in range(0,n):
     ns.append(max(nums))
 for item in ns:
     print(item,end=' ')
+#洛谷时间限制超出，蓝桥杯不会，这里不进行修改了

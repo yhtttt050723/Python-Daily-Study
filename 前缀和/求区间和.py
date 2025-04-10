@@ -10,3 +10,4 @@ for _ in range(m):
 
 for i in range(0,m):
     print(sum(ai[left[i]-1:right[i]]))
+#洛谷时间限制超出，蓝桥杯不会，这里不进行修改了
