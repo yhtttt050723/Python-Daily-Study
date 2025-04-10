@@ -1,4 +1,4 @@
-T = int(input())
+'''T = int(input())
 l = []
 for i in range(T):
     yeartime,daytime,offset = map(str,input().split())
@@ -67,4 +67,46 @@ for i in range(T):
     if m > int(off[i]):
         m-=int(off[i])
         
-    print(f'{y}-{m0:02d}-{d:02d} {h:02d}:{m:02d}:00')
+    print(f'{y}-{m0:02d}-{d:02d} {h:02d}:{m:02d}:00')'''
+#问题是还是需要用库函数，写的时候忘记库函数怎么写了，导致很烦
+import datetime
+
+T = int(input())
+l = []
+for i in range(T):
+    # 保持输入处理方式
+    parts = input().split()
+    yeartime = parts[0]
+    daytime = parts[1]
+    offset = int(parts[2])
+    l.append([yeartime, daytime, offset])
+
+for case in l:
+    # 合并日期时间字符串
+    dt_str = f"{case[0]} {case[1]}"
+    # 解析目标时间
+    target_time = datetime.datetime.strptime(dt_str, "%Y-%m-%d %H:%M:%S")
+    # 计算纪元时间
+    epoch = datetime.datetime(1970, 1, 1)
+    
+    # 计算总秒数差
+    delta = (target_time - epoch).total_seconds()
+    total_minutes = int(delta // 60)
+    
+    # 计算最近的闹铃时间（保持offset变量名）
+    x = case[2]
+    remainder = total_minutes % x
+    nearest_minutes = total_minutes - remainder
+    
+    # 转换回时间（保持变量名y,m0,d,h,m）
+    nearest_time = epoch + datetime.timedelta(minutes=nearest_minutes)
+    
+    # 格式化输出（保持你的格式）
+    print(nearest_time.strftime("%Y-%m-%d %H:%M:%S"))
+
+
+
+
+
+
+    
